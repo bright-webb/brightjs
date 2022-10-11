@@ -110,14 +110,14 @@ module.exports =  class Bright{
     loop(selector, callback){
         const elements = selector;
         for(let i = 0; i < elements.length; i++){
-            callback.call(elements[i], i);
+            callback.call(elements);
         }
     }
 
     // each method
     each(array, callback){
         for(let i = 0; i < array.length; i++){
-            callback.call(array[i], i);
+            callback.call(array);
         }
     }
 
