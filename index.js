@@ -254,6 +254,12 @@ module.exports =  class Bright{
         return document.getElementsByName(name);
     }
 
+    // find element
+    find(selector, callback){
+        var element =  this.select(selector);
+        callback(element);
+    }
+
     // find all elements
     findAll(selector){
         return this.selectAll(selector);
