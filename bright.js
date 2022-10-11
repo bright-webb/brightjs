@@ -1,10 +1,10 @@
 /*
     Author: Bright Webb
     Date: 2022-10-1
-    Description: This is a simplified version of the javascript like a pro library
+    Description: This is a simple module of javascript to save coding time with lots of methods to use in your projects.
 */
 
-module.exports = class Bright{
+export class Bright{
 
     // version
     version(){
@@ -20,19 +20,19 @@ module.exports = class Bright{
         }
     }
 
-    // mount method
+    // The mount method is used to insert html inside an element
     mount(selector, html){
         var element = this.select(selector);
         element.innerHTML = html;
     }
 
-    // unmount method
+    // The unmount method is used to remove html inside an element
     unmount(selector){
         var element = this.select(selector);
         element.innerHTML = '';
     }
 
-    // component method
+    // The component method is used to create a div element with an id attribute and dynamically insert html content inside it
     component(name, html){
         var element = document.createElement('div');
         element.setAttribute('id', name);
@@ -253,7 +253,7 @@ module.exports = class Bright{
         return this.select(selector).dataset[data];
     }
 
-    // select attribute of an element
+    // select style attribute of an element
     selectStyle(selector, style){
         return this.select(selector).style[style];
     }
@@ -405,7 +405,6 @@ module.exports = class Bright{
     create(tag){
         return document.createElement(tag);
     }
-
 
 
     // append method
@@ -930,7 +929,7 @@ module.exports = class Bright{
     }
 
 
-    // countdown
+    // countdown method
     countdown(selector, seconds, callback){
         var element = this.select(selector);
         var interval = setInterval(function(){
@@ -943,12 +942,12 @@ module.exports = class Bright{
         }, 1000);
     }
 
-    // get random number
+    // generate random number
     randomNumber(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // get random color
+    // generate random color
     randomColor(){
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -1006,7 +1005,6 @@ module.exports = class Bright{
         element.innerHTML = html;
     }
 
-    // display states in country dropdown list
 
     //scroll percentage
     scrollPercentage(){
@@ -1129,36 +1127,22 @@ module.exports = class Bright{
         document.getElementById('progress').style.display = 'none';
     }
 
-    // animate elements
-    animateElements(){
-        var elements = document.getElementsByClassName('animate');
-        for(var i = 0; i < elements.length; i++){
-            var element = elements[i];
-            var elementTop = element.getBoundingClientRect().top;
-            var elementBottom = element.getBoundingClientRect().bottom;
-            if(elementTop < window.innerHeight && elementBottom >= 0){
-                element.classList.add('active');
-            }
-        }
-    }
-
-
     // sticky header
-    stickyHeader(){
-        var header = document.getElementById('header');
+    stickyHeader(selector, className){
+        var header = this.select(selector);
         var sticky = header.offsetTop;
         window.onscroll = function(){
             if(window.pageYOffset > sticky){
-                header.classList.add('sticky');
+                header.classList.add(className);
             }else{
-                header.classList.remove('sticky');
+                header.classList.remove(className);
             }
         }
     }
 
     // show the header
-    showHeader(){
-        document.getElementById('header').style.display = 'block';
+    showHeader(selector){
+        this.select(selector).style.display = 'block';
     }
 
 
@@ -1177,9 +1161,9 @@ module.exports = class Bright{
     }
 
     // image preview
-    imagePreview(){
-        var image = document.getElementById('image');
-        var imagePreview = document.getElementById('image-preview');
+    imagePreview(selector, target){
+        var image = this.select(selector);
+        var imagePreview = this.select(target);
         image.addEventListener('change', function(){
             var file = this.files[0];
             if(file){
@@ -1193,10 +1177,10 @@ module.exports = class Bright{
     }
 
     // image preview with progress bar
-    imagePreviewWithProgressBar(){
-        var image = document.getElementById('image');
-        var imagePreview = document.getElementById('image-preview');
-        var progressBar = document.getElementById('progress-bar');
+    imagePreviewWithProgressBar(selector, target, progress){
+        var image = this.select(selector);
+        var imagePreview = this.select(target);
+        var progressBar = this.select(progress);
         image.addEventListener('change', function(){
             var file = this.files[0];
             if(file){
@@ -1249,5 +1233,115 @@ module.exports = class Bright{
     countWords(string){
         return string.split(' ').length;
     }
+
+    // if element is in viewport
+    inViewport(element){
+        var rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // is a method
+    is(selector, method){
+        var element = this.select(selector);
+        return element[method];
+    }
+
+    // is a function
+    isFunction(selector, method){
+        var element = this.select(selector);
+        return typeof element[method] === 'function';
+    }
+
+    // is a string
+    isString(selector, method){
+        var element = this.select(selector);
+        return typeof element[method] === 'string';
+    }
+
+    // is a number
+    isNumber(selector, method){
+        var element = this.select(selector);
+        return typeof element[method] === 'number';
+    }
+
+    // is an object
+    isObject(selector, method){
+        var element = this.select(selector);
+        return typeof element[method] === 'object';
+    }
+
+    // is an array
+    isArray(selector, method){
+        var element = this.select(selector);
+        return Array.isArray(element[method]);
+    }
+
+    // is a boolean
+    isBoolean(selector, method){
+        var element = this.select(selector);
+        return typeof element[method] === 'boolean';
+    }
+
+    // check if element is empty
+    isEmpty(selector){
+        var element = this.select(selector);
+        return element.innerHTML === '';
+    }
+
+    // check if element is visible
+    isVisible(selector){
+        var element = this.select(selector);
+        return element.style.display !== 'none';
+    }
+
+    // check if element is hidden
+    isHidden(selector){
+        var element = this.select(selector);
+        return element.style.display === 'none';
+    }
+
+    // check if element is checked
+    isChecked(selector){
+        var element = this.select(selector);
+        return element.checked;
+    }
+
+    // check if element is selected
+    isSelected(selector){
+        var element = this.select(selector);
+        return element.selected;
+    }
+
+    // check if element is disabled
+    isDisabled(selector){
+        var element = this.select(selector);
+        return element.disabled;
+    }
+
+    // check if element is enabled
+    isEnabled(selector){
+        var element = this.select(selector);
+        return !element.disabled;
+    }
+
+    // if an item is in an array
+    inArray(item, array){
+        return array.indexOf(item) !== -1;
+    }
+
+    // if an item is in an object
+    inObject(item, object){
+        return object.hasOwnProperty(item);
+    }
+
+    // if an item is in a string
+    inString(item, string){
+        return string.indexOf(item) !== -1;
+    }  
 
 }
