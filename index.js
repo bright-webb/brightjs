@@ -4,7 +4,7 @@
     Description: This is a simplified version of the javascript like a pro library
 */
 
-export class Bright{
+module.exports = class Bright{
 
     // version
     version(){
@@ -74,7 +74,7 @@ export class Bright{
 
     // loop through all elements
     loop(selector, callback){
-        const elements = document.querySelectorAll(selector);
+        const elements = selector;
         for(let i = 0; i < elements.length; i++){
             callback.call(elements[i], i);
         }
