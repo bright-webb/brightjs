@@ -4,7 +4,7 @@
     Description: This is a simple module of javascript to save coding time with lots of methods to use in your projects.
 */
 
-export class Bright{
+module.exports =  class Bright{
 
     // version
     version(){
@@ -38,6 +38,24 @@ export class Bright{
         element.setAttribute('id', name);
         element.innerHTML = html;
         document.body.appendChild(element);
+    }
+
+   // Insert an element inside an element
+    insert(selector, html){
+        var element = this.select(selector);
+        element.insertAdjacentHTML('beforeend', html);
+    }
+
+    // Insert an element before an element
+    insertBefore(selector, html){
+        var element = this.select(selector);
+        element.insertAdjacentHTML('beforebegin', html);
+    }
+
+    // Insert an element after an element
+    insertAfter(selector, html){
+        var element = this.select(selector);
+        element.insertAdjacentHTML('afterend', html);
     }
 
 
@@ -78,6 +96,16 @@ export class Bright{
         for(let i = 0; i < elements.length; i++){
             callback.call(elements[i], i);
         }
+    }
+
+    // reference to the current element
+    current(callback){
+        callback.call(this);
+    }
+
+    // reference to the current function
+    self(callback){
+        callback.call(this);
     }
 
     // for each loop
