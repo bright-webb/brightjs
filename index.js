@@ -108,14 +108,6 @@ module.exports =  class Bright{
         }
     }
 
-    // loop through all elements
-    loop(selector, callback){
-        const elements = selector;
-        for(let i = 0; i < elements.length; i++){
-            callback.call(elements[i], i);
-        }
-    }
-
     // each method
     each(array, callback){
         for(let i = 0; i < array.length; i++){
@@ -125,7 +117,7 @@ module.exports =  class Bright{
 
     // reference to the current element
     current(callback){
-        callback(this);
+        callback.call(this);
     }
 
     // reference to the current function
@@ -140,11 +132,10 @@ module.exports =  class Bright{
         }
     }
 
-    // add event listener
+    // add event listener 
     on(selector, event, callback){
-        this.loop(selector, function(){
-            this.addEventListener(event, callback);
-        });
+        var element =  this.select(selector);
+        element.addEventListener(event, callback);
     }
 
     // add click event listener
