@@ -13,25 +13,31 @@ var $ = new Bright()
 
 to check if the dom is loaded 
 $.ready(function(){  
-    // your code here
+    // your code here  
 })
 
-Below is the list of some methods
+Below is the list of some methods  
 
 
-component(id, html) - The component method create a div element and append it to the document. The component method accepts two arguments, an id attribute, and html content
+component(id, html) - The component method create a div element and append it to the document. The component method accepts two arguments, an id attribute, and html content  
 
-mount(selector, html) - The mount method insert html content into an existing element.
-unmount(selector) - The unmount method removes content from an element
-insert(selector, html) - The insert method insert html content inside selected element
-insertBefore(selector, html) - insert html content before selected element
-insertAfter(selector, html) - insert html content after selected element
-switchClass(selector, className) - add a class to an element if it doesn't have it and remove it if it has it
-each(array, callback) - loop through array
-current(callback) - reference to current element
-self(callback) - reference to current function
-forEach(array, callback) - loop through array
-on(select, event, callback) - add an event listener
+mount(selector, html) - The mount method insert html content into an existing element.  
+unmount(selector) - The unmount method removes content from an element  
+insert(selector, html) - The insert method insert html content inside selected element  
+insertBefore(selector, html) - insert html content before selected element  
+insertAfter(selector, html) - insert html content after selected element  
+switchClass(selector, className) - add a class to an element if it doesn't have it and remove it if it has it  
+each(array, callback) - loop through array  
+current(callback) - reference to current element  
+self(callback) - reference to current function  
+forEach(array, callback) - loop through array  
+on(selector, event, callback) - add an event listener  
+click(selector, callback) - click event handler  
+submit(selector, callback) - submit event handerl. Note that (return false) won't prevent the  form from submitting, if you want to prevent the form from submitting, do this:   
+$.submit('form', function(e){  
+    e.preventDefault()  
+    // your code  
+})
 
 
 
