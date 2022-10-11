@@ -22,13 +22,13 @@ module.exports =  class Bright{
 
     // The mount method is used to insert html inside an element
     mount(selector, html){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.innerHTML = html;
     }
 
     // The unmount method is used to remove html inside an element
     unmount(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.innerHTML = '';
     }
 
@@ -42,26 +42,26 @@ module.exports =  class Bright{
 
    // Insert an element inside an element
     insert(selector, html){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.insertAdjacentHTML('beforeend', html);
     }
 
     // Insert an element before an element
     insertBefore(selector, html){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.insertAdjacentHTML('beforebegin', html);
     }
 
     // Insert an element after an element
     insertAfter(selector, html){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.insertAdjacentHTML('afterend', html);
     }
 
 
     // provide method to add a class to an element if it doesn't have it and remove it if it has it
     switchClass(selector, className){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         if(element.classList.contains(className)){
             element.classList.remove(className);
         }else{
@@ -92,7 +92,7 @@ module.exports =  class Bright{
 
     // select element
     selectElement(selector, callback){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         callback(element);
     }
 
@@ -111,6 +111,13 @@ module.exports =  class Bright{
         const elements = selector;
         for(let i = 0; i < elements.length; i++){
             callback.call(elements[i], i);
+        }
+    }
+
+    // each method
+    each(array, callback){
+        for(let i = 0; i < array.length; i++){
+            callback.call(array[i], i);
         }
     }
 
@@ -215,7 +222,7 @@ module.exports =  class Bright{
 
     // find element
     find(selector, callback){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         callback.call(element);
     }
 
@@ -229,7 +236,7 @@ module.exports =  class Bright{
     }
     // find content of an element
     findContent(selector){
-        return this.select(selector).innerHTML;
+        return  document.querySelector(selector).innerHTML;
     }
 
     // find element by id
@@ -249,200 +256,200 @@ module.exports =  class Bright{
 
     // get position of an element
     getPosition(selector){
-        return this.select(selector).getBoundingClientRect();
+        return  document.querySelector(selector).getBoundingClientRect();
     }
 
     // make an element visible
     show(selector){
-        this.select(selector).style.display = 'block';
+        document.querySelector(selector).style.display = 'block';
     }
 
     // make an element invisible
     hide(selector){
-        this.select(selector).style.display = 'none';
+        document.querySelector(selector).style.display = 'none';
     }
 
     // add class to an element
     addClass(selector, className){
-        this.select(selector).classList.add(className);
+        document.querySelector(selector).classList.add(className);
     }
 
     // remove class from an element
     removeClass(selector, className){
-        this.select(selector).classList.remove(className);
+        document.querySelector(selector).classList.remove(className);
     }
 
     // toggle class of an element
     toggleClass(selector, className){
-        this.select(selector).classList.toggle(className);
+        document.querySelector(selector).classList.toggle(className);
     }
 
     // check if an element has a class
     hasClass(selector, className){
-        return this.select(selector).classList.contains(className);
+        return ocument.querySelector(selector).classList.contains(className);
     }
 
     // set attribute of an element
     setAttribute(selector, attribute, value){
-        this.select(selector).setAttribute(attribute, value);
+        document.querySelector(selector).setAttribute(attribute, value);
     }
 
     // get attribute of an element
     getAttribute(selector, attribute){
-        return this.select(selector).getAttribute(attribute);
+        return  document.querySelector(selector).getAttribute(attribute);
     }
 
     // select data attribute of an element
     selectData(selector, data){
-        return this.select(selector).dataset[data];
+        return  document.querySelector(selector).dataset[data];
     }
 
     // select style attribute of an element
     selectStyle(selector, style){
-        return this.select(selector).style[style];
+        return  document.querySelector(selector).style[style];
     }
 
     // set style of an element
     setStyle(selector, style, value){
-        this.select(selector).style[style] = value;
+         document.querySelector(selector).style[style] = value;
     }
 
 
     // remove attribute of an element
     removeAttribute(selector, attribute){
-        this.select(selector).removeAttribute(attribute);
+         document.querySelector(selector).removeAttribute(attribute);
     }
 
 
     // get style of an element
     getStyle(selector, style){
-        return this.select(selector).style[style];
+        return  document.querySelector(selector).style[style];
     }
 
     // set content of an element
     setContent(selector, content){
-        this.select(selector).innerHTML = content;
+         document.querySelector(selector).innerHTML = content;
     }
 
     // get content of an element
     getContent(selector){
-        return this.select(selector).innerHTML;
+        return  document.querySelector(selector).innerHTML;
     }
 
     // set value of an element
     setValue(selector, value){
-        this.select(selector).value = value;
+         document.querySelector(selector).value = value;
     }
 
     // get value of an element
     getValue(selector){
-        return this.select(selector).value;
+        return  document.querySelector(selector).value;
     }
 
     // set html of an element
     setHtml(selector, html){
-        this.select(selector).innerHTML = html;
+         document.querySelector(selector).innerHTML = html;
     }
 
     // get html of an element
     getHtml(selector){
-        return this.select(selector).innerHTML;
+        return  document.querySelector(selector).innerHTML;
     }
 
     // set text of an element
     setText(selector, text){
-        this.select(selector).innerText = text;
+         document.querySelector(selector).innerText = text;
     }
 
     // get text of an element
     getText(selector){
-        return this.select(selector).innerText;
+        return document.querySelector(selector).innerText;
     }
 
     // set background color of an element
     setBackgroundColor(selector, color){
-        this.select(selector).style.backgroundColor = color;
+         document.querySelector(selector).style.backgroundColor = color;
     }
 
     // get background color of an element
     getBackgroundColor(selector){
-        return this.select(selector).style.backgroundColor;
+        return  document.querySelector(selector).style.backgroundColor;
     }
 
     // set color of an element
     setColor(selector, color){
-        this.select(selector).style.color = color;
+         document.querySelector(selector).style.color = color;
     }
 
     // get color of an element
     getColor(selector){
-        return this.select(selector).style.color;
+        return  document.querySelector(selector).style.color;
     }
 
     // parent of an element
     parent(selector){
-        return this.select(selector).parentNode;
+        return  document.querySelector(selector).parentNode;
     }
 
     // grandparent of an element
     grandparent(selector){
-        return this.select(selector).parentNode.parentNode;
+        return  document.querySelector(selector).parentNode.parentNode;
     }
 
     // child of an element
     child(selector){
-        return this.select(selector).childNodes;
+        return  document.querySelector(selector).childNodes;
     }
 
 
     // children of an element
     children(selector){
-        return this.select(selector).children;
+        return  document.querySelector(selector).children;
     }
 
     // first child of an element
     firstChild(selector){
-        return this.select(selector).firstChild;
+        return  document.querySelector(selector).firstChild;
     }
 
     // last child of an element
     lastChild(selector){
-        return this.select(selector).lastChild;
+        return  document.querySelector(selector).lastChild;
     }
 
     // next sibling of an element
     nextSibling(selector){
-        return this.select(selector).nextSibling;
+        return  document.querySelector(selector).nextSibling;
     }
 
     // previous sibling of an element
     previousSibling(selector){
-        return this.select(selector).previousSibling;
+        return  document.querySelector(selector).previousSibling;
     }
 
     // append child to an element
     appendChild(selector, child){
-        this.select(selector).appendChild(child);
+         document.querySelector(selector).appendChild(child);
     }
 
     // prepend child to an element
     prependChild(selector, child){
-        this.select(selector).prepend(child);
+         document.querySelector(selector).prepend(child);
     }
 
     // remove child from an element
     removeChild(selector, child){
-        this.select(selector).removeChild(child);
+         document.querySelector(selector).removeChild(child);
     }
 
     // remove an element
     remove(selector){
-        this.select(selector).remove();
+         document.querySelector(selector).remove();
     }
 
     // clone an element
     clone(selector){
-        return this.select(selector).cloneNode(true);
+        return  document.querySelector(selector).cloneNode(true);
     }
 
     // create an element
@@ -453,7 +460,7 @@ module.exports =  class Bright{
 
     // append method
     append(selector, content){
-        this.select(selector).innerHTML += content;
+         document.querySelector(selector).innerHTML += content;
     }
 
 
@@ -687,26 +694,26 @@ module.exports =  class Bright{
 
     // bind an event to an element
     bind(selector, event, callback){
-        this.select(selector).addEventListener(event, callback);
+         document.querySelector(selector).addEventListener(event, callback);
     }
 
     // unbind an event from an element
     unbind(selector, event, callback){
-        this.select(selector).removeEventListener(event, callback);
+         document.querySelector(selector).removeEventListener(event, callback);
     }
 
     // model data to an element
     model(selector, data){
-        this.select(selector).innerHTML = data;
+         document.querySelector(selector).innerHTML = data;
     }
 
     // using function to model data to an element
     using(selector, callback){
-        this.select(selector).innerHTML = callback();
+         document.querySelector(selector).innerHTML = callback();
     }
     // template function
     template(selector, data){
-        var template = this.select(selector).innerHTML;
+        var template =  document.querySelector(selector).innerHTML;
         var output = template.replace(/{([^{}]*)}/g, function(a, b){
             var r = data[b];
             return typeof r === 'string' || typeof r === 'number' ? r : a;
@@ -716,22 +723,22 @@ module.exports =  class Bright{
 
     // Render a template to an element
     render(selector, template, data){
-        this.select(selector).innerHTML = this.template(template, data);
+         document.querySelector(selector).innerHTML = this.template(template, data);
     }
 
     // replace content of an element
     replace(selector, content){
-        this.select(selector).outerHTML = content;
+         document.querySelector(selector).outerHTML = content;
     }
 
     // get the value of a form element
     getFormValue(selector){
-        return this.select(selector).value;
+        return  document.querySelector(selector).value;
     }
 
     // set the value of a form element
     setFormValue(selector, value){
-        this.select(selector).value = value;
+         document.querySelector(selector).value = value;
     }
 
     // Repeat function
@@ -750,25 +757,25 @@ module.exports =  class Bright{
 
     // delete element from dom
     delete(selector){
-        this.select(selector).remove();
+         document.querySelector(selector).remove();
     }
 
     // delete all elements from dom
     deleteAll(selector){
-        this.selectAll(selector).forEach(function(element){
+         document.querySelectorAll(selector).forEach(function(element){
             element.remove();
         });
     }
 
     // bind data to an element from model
     bindData(selector, model){
-        this.select(selector).innerHTML = model;
+         document.querySelector(selector).innerHTML = model;
     }
 
 
     // serialize form data
     serialize(selector){
-        var form = this.select(selector);
+        var form =  document.querySelector(selector);
         var data = {};
         for(var i = 0; i < form.elements.length; i++){
             var element = form.elements[i];
@@ -779,7 +786,7 @@ module.exports =  class Bright{
 
     // form validation
     validate(selector, rules){
-        var form = this.select(selector);
+        var form =  document.querySelector(selector);
         var errors = [];
         for(var i = 0; i < form.elements.length; i++){
             var element = form.elements[i];
@@ -805,7 +812,7 @@ module.exports =  class Bright{
 
     // accept only numbers
     acceptNumbers(selector){
-        this.select(selector).addEventListener('keypress', function(event){
+         document.querySelector(selector).addEventListener('keypress', function(event){
             if(event.which < 48 || event.which > 57){
                 event.preventDefault();
             }
@@ -814,7 +821,7 @@ module.exports =  class Bright{
 
     // accept only letters
     acceptLetters(selector){
-        this.select(selector).addEventListener('keypress', function(event){
+         document.querySelector(selector).addEventListener('keypress', function(event){
             if(event.which < 65 || event.which > 90){
                 event.preventDefault();
             }
@@ -823,7 +830,7 @@ module.exports =  class Bright{
 
     // accept only letters and numbers
     acceptLettersNumbers(selector){
-        this.select(selector).addEventListener('keypress', function(event){
+         document.querySelector(selector).addEventListener('keypress', function(event){
             if(event.which < 48 || event.which > 57 && event.which < 65 || event.which > 90){
                 event.preventDefault();
             }
@@ -975,7 +982,7 @@ module.exports =  class Bright{
 
     // countdown method
     countdown(selector, seconds, callback){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         var interval = setInterval(function(){
             element.innerHTML = seconds;
             seconds--;
@@ -1041,7 +1048,7 @@ module.exports =  class Bright{
 
     // list method
     list(selector, array){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         var html = '';
         for(var i = 0; i < array.length; i++){
             html += '<li>' + array[i] + '</li>';
@@ -1058,7 +1065,7 @@ module.exports =  class Bright{
 
     // scroll progress bar
     scrollProgressBar(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         var progress = this.scrollPercentage();
         element.style.width = progress + '%';
     }
@@ -1083,7 +1090,7 @@ module.exports =  class Bright{
 
     // scroll to element
     scrollToElement(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         var c = document.documentElement.scrollTop || document.body.scrollTop;
         if(c > element.offsetTop){
             window.requestAnimationFrame(this.scrollToElementAnimation);
@@ -1097,13 +1104,13 @@ module.exports =  class Bright{
 
     // progress bar
     progressBar(selector, percent){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         element.style.width = percent + '%';
     }
 
     // progress circle
     progressCircle(selector, percent){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         var radius = element.getAttribute('r');
         var circumference = radius * 2 * Math.PI;
         element.style.strokeDasharray = circumference + ' ' + circumference;
@@ -1112,7 +1119,7 @@ module.exports =  class Bright{
 
     // progress bar animation
     progressBarAnimation(selector){
-        var elements = this.select(selector)
+        var elements =  document.querySelector(selector)
         for(var i = 0; i < elements.length; i++){
             var element = elements[i];
             var percent = element.getAttribute('data-percent');
@@ -1129,7 +1136,7 @@ module.exports =  class Bright{
 
     // progress circle animation
     progressCircleAnimation(selector){
-        var elements = this.select(selector)
+        var elements =  document.querySelector(selector)
         for(var i = 0; i < elements.length; i++){
             var element = elements[i];
             var percent = element.getAttribute('data-percent');
@@ -1149,7 +1156,7 @@ module.exports =  class Bright{
 
     // animate the progress bar
     animateProgressBar(selector){
-        var progressBar = this.select(selector);
+        var progressBar =  document.querySelector(selector);
         var progress = 0;
         var interval = setInterval(function(){
             progress += 1;
@@ -1173,7 +1180,7 @@ module.exports =  class Bright{
 
     // sticky header
     stickyHeader(selector, className){
-        var header = this.select(selector);
+        var header =  document.querySelector(selector);
         var sticky = header.offsetTop;
         window.onscroll = function(){
             if(window.pageYOffset > sticky){
@@ -1186,7 +1193,7 @@ module.exports =  class Bright{
 
     // show the header
     showHeader(selector){
-        this.select(selector).style.display = 'block';
+         document.querySelector(selector).style.display = 'block';
     }
 
 
@@ -1206,8 +1213,8 @@ module.exports =  class Bright{
 
     // image preview
     imagePreview(selector, target){
-        var image = this.select(selector);
-        var imagePreview = this.select(target);
+        var image =  document.querySelector(selector);
+        var imagePreview =  document.querySelector(target);
         image.addEventListener('change', function(){
             var file = this.files[0];
             if(file){
@@ -1222,9 +1229,9 @@ module.exports =  class Bright{
 
     // image preview with progress bar
     imagePreviewWithProgressBar(selector, target, progress){
-        var image = this.select(selector);
-        var imagePreview = this.select(target);
-        var progressBar = this.select(progress);
+        var image =  document.querySelector(selector);
+        var imagePreview =  document.querySelector(target);
+        var progressBar =  document.querySelector(progress);
         image.addEventListener('change', function(){
             var file = this.files[0];
             if(file){
@@ -1291,85 +1298,85 @@ module.exports =  class Bright{
 
     // is a method
     is(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element[method];
     }
 
     // is a function
     isFunction(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return typeof element[method] === 'function';
     }
 
     // is a string
     isString(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return typeof element[method] === 'string';
     }
 
     // is a number
     isNumber(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return typeof element[method] === 'number';
     }
 
     // is an object
     isObject(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return typeof element[method] === 'object';
     }
 
     // is an array
     isArray(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return Array.isArray(element[method]);
     }
 
     // is a boolean
     isBoolean(selector, method){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return typeof element[method] === 'boolean';
     }
 
     // check if element is empty
     isEmpty(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.innerHTML === '';
     }
 
     // check if element is visible
     isVisible(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.style.display !== 'none';
     }
 
     // check if element is hidden
     isHidden(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.style.display === 'none';
     }
 
     // check if element is checked
     isChecked(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.checked;
     }
 
     // check if element is selected
     isSelected(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.selected;
     }
 
     // check if element is disabled
     isDisabled(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return element.disabled;
     }
 
     // check if element is enabled
     isEnabled(selector){
-        var element = this.select(selector);
+        var element =  document.querySelector(selector);
         return !element.disabled;
     }
 
