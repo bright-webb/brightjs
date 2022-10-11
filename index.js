@@ -30,13 +30,14 @@ module.exports =  class Bright{
 
     // selector is the selector of the element
     select(selector){
-        if(document.querySelector(selector)){
+       if(selector instanceof Node){
+            return selector;
+       }
+        else{
             return document.querySelector(selector);
         }
-        else{
-            return selector;
-        }
     }
+
 
     // select element by attribute
     selectByAttribute(attribute, value){
