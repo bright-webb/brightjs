@@ -80,6 +80,22 @@ module.exports =  class Bright{
         return document.querySelector(selector);
     }
 
+    // select element by attribute
+    selectByAttribute(attribute, value){
+        return document.querySelector('['+attribute+'="'+value+'"]');
+    }
+
+    // select all elements by attribute
+    selectAllByAttribute(attribute, value){
+        return document.querySelectorAll('['+attribute+'="'+value+'"]');
+    }
+
+    // select element
+    selectElement(selector, callback){
+        var element = this.select(selector);
+        callback(element);
+    }
+
     // select value of an input element
     selectValue(selector){
         return document.querySelector(selector).value;
@@ -100,12 +116,12 @@ module.exports =  class Bright{
 
     // reference to the current element
     current(callback){
-        callback.call(this);
+        callback(this);
     }
 
     // reference to the current function
     self(callback){
-        callback.call(this);
+        callback(this);
     }
 
     // for each loop
