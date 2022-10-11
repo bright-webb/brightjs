@@ -27,7 +27,6 @@ insert(selector, html) - The insert method insert html content inside selected e
 insertBefore(selector, html) - insert html content before selected element
 insertAfter(selector, html) - insert html content after selected element
 switchClass(selector, className) - add a class to an element if it doesn't have it and remove it if it has it
-loop(selector, callback) - loop through all elements
 each(array, callback) - loop through array
 current(callback) - reference to current element
 self(callback) - reference to current function
