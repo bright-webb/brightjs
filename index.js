@@ -38,6 +38,16 @@ module.exports =  class Bright{
         }
     }
 
+      // select all elements
+      selectAll(selector){
+        if(selector instanceof Node){
+            return selector;
+       }
+        else{
+            return document.querySelectorAll(selector);
+        }
+    }
+
 
     // select element by attribute
     selectByAttribute(attribute, value){
@@ -60,10 +70,7 @@ module.exports =  class Bright{
         return this.select(selector).value;
     }
 
-    // select all elements
-    selectAll(selector){
-        return this.selectAll(selector);
-    }
+  
 
     // The mount method is used to insert html inside an element
     mount(selector, html){
