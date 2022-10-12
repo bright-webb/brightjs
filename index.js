@@ -8,7 +8,7 @@ module.exports =  class Bright{
 
     // version
     version(){
-        return '1.0.0';
+        return '1.1.15';
     }
 
     // configure a callback function to be executed when the DOM is fully loaded
@@ -62,7 +62,7 @@ module.exports =  class Bright{
     // select element
     selectElement(selector, callback){
         var element =  this.select(selector);
-        callback(element);
+        callback.call(element);
     }
 
     // select value of an input element
@@ -261,6 +261,7 @@ module.exports =  class Bright{
     selectByName(name){
         return document.getElementsByName(name);
     }
+
 
     // find element
     find(selector, callback){
