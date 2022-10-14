@@ -4,7 +4,7 @@ Date: 2022-10-1
 Description: This is a simple module of javascript to save coding time with lots of methods to use in your projects.
 */
 
-export class Bright{
+module.exports =  class Bright{
 
     // version
     version(){
